@@ -1,0 +1,38 @@
+{% extends "list/base.html" %}
+{% block content%}
+<div >
+    <div class="col">
+        <h2>:اضافه کردن کار</h2>
+        <form action="http://127.0.0.1:8000/list/" method="post" class="form-inline">
+        {% csrf_token %}
+        <input type="text" required name="content" class="form-control mb-2 mr-sm-2" id="inlineFormInputName" placeholder="Item">
+        <br/><br/>
+        <button type="submit" class="btn btn-primary mb-2" >اضافه کن</button>
+
+        </form>
+    </div>
+</div>
+<br>
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>لیست آیتم ها</th>
+            <th><center>زمان</center></th>
+            <th>حذف آیتم مربوطه</th>
+        </tr>
+    </thead>
+    {% for item in todo_items %}
+    <tbody>
+        <tr>
+            <td>{{item.text}}</td>
+            <td>{{item.added_date}}</td>
+            <td><form action="delete_todo/{{item.id}}/" method="post">
+                {% csrf_token %}
+                <button class="btn" style="" type="submit" name="action"><i class="ma">حذف</i>
+                </button>
+            </form></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock content %}
