@@ -1,6 +1,7 @@
 {% extends "list/base.html" %}
 {% block content%}
 <div >
+     خوش آمدید  <i style="color:red"> {{ user.get_username}} </i>
     <div class="col">
         <h2>:اضافه کردن کار</h2>
         <form action="/list/" method="post" class="form-inline">
@@ -16,15 +17,16 @@
 <table class="styled-table">
     <thead>
         <tr>
+            
             <th>لیست آیتم ها</th>
-            <th><center>زمان</center></th>
+            <th>زمان</th>
             <th>حذف آیتم مربوطه</th>
         </tr>
     </thead>
     {% for item in todo_items %}
     <tbody>
-        <tr>
-            <td>{{item.text}}</td>
+        <tr >
+            <td><center>{{item.text}}</center></td>
             <td>{{item.added_date}}</td>
             <td><form action="delete_todo/{{item.id}}/" method="post">
                 {% csrf_token %}
@@ -35,4 +37,6 @@
     </tbody>
     {% endfor %}
 </table>
+
+<a href="{% url 'logout'%}" ><button class="btn btn-primary mb-2">خروج</button></a>
 {% endblock content %}

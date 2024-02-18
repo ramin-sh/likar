@@ -1,0 +1,67 @@
+
+
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  {# Load the tag library #}
+  {% load django_bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<title>پست جدید</title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'add_newpost'  %}">ایجاد پست جدید</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_post'  %}">ویرایش پست های قبلی </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">مشاهده وبلاگ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" color="red" href="/accounts/" >خروج</a>
+      </li>
+    </ul>
+    
+
+   
+
+        
+   
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ردیف</th>
+            <th scope="col">عنوان</th>
+            <th scope="col">ویرایش</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+          <tr>
+            <th scope="row">{{ forloop.counter}}</th>  {# The current iteration of the loop (1-indexed)#}
+            <td>{{post.title}}</td>
+            <td><a href="{% url 'edit_post' post.id %}">ویرایش</a> </td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+</body>
+</html>

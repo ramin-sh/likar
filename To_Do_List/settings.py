@@ -25,7 +25,7 @@ SECRET_KEY = 'w_trgs4tti0*qvs&!nd2bju%(st(gp2%cp8m)zx3&ggu70qai0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://likar.liara.run']
 
 
 # Application definition
@@ -75,9 +75,13 @@ WSGI_APPLICATION = 'To_Do_List.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db name',
+        'USER': 'user',
+        'PASSWORD': 'pass',
+        'HOST':'host',
+        'PORT':'3306',
     }
 }
 
@@ -119,3 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.office365.com'#for hotmail
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your mail'
+EMAIL_HOST_PASSWORD = 'email password'
