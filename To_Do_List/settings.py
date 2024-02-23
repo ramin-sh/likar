@@ -25,7 +25,7 @@ SECRET_KEY = 'w_trgs4tti0*qvs&!nd2bju%(st(gp2%cp8m)zx3&ggu70qai0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://likar.liara.run']
+ALLOWED_HOSTS = []
 
 
 # Application definition
